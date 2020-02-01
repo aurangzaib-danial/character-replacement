@@ -1,0 +1,41 @@
+<h1>Result</h1>
+
+<p id="result">
+  <%= @character_replacer.result %>
+</p>
+
+<div>
+  <%= button_tag 'Copy', id: 'copy' %>
+</div>
+
+<h3 class='new_string_link'>
+  <%= link_to 'New String', root_path %>
+</h3>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#copy').click(function() {
+      
+        $(this).html('Copied!')
+
+        const result = $('#result')
+
+        const temp = $("<input>")
+
+        $("body").append(temp)
+
+        temp.val($(result).html()).select()
+
+        document.execCommand("copy")
+        
+        temp.remove()
+        
+        const selected = this
+
+        setTimeout(function(){ $(selected).html('Copy') }, 3000);
+    });
+  });
+</script>

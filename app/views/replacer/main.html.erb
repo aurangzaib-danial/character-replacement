@@ -1,0 +1,37 @@
+<h1>Replace a Character in String</h1>
+
+<%= form_tag replace_path do %>
+
+  <% if @character_replacer.errors.any? %>
+    <div class="errors">
+      <h2><%= pluralize(@character_replacer.errors.count, 'error') %> prevented string processing</h2>
+      
+      <ul>
+        <% @character_replacer.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <span>Replace character </span>
+    
+    <%= text_field_tag 'target', nil, maxlength: 1 %>
+    <span>in the following string with this</span>
+    
+    <%= text_field_tag 'replacement', nil, maxlength: 1 %>
+    
+    <span>character</span>
+  </div>
+
+  <div>
+    <%= label_tag 'string', 'Enter string for replacement' %>
+    <br><br>
+    <%= text_area_tag 'string', nil, wrap: 'off' %>
+  </div>
+
+  <div>
+    <%= button_tag 'Replace' %>
+  </div>
+<% end %>
